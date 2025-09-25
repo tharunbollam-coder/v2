@@ -2,6 +2,7 @@
 
 import { use } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Clock, Users, Star, BookOpen, Play, Lock, Calendar } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { series } from '@/data/series';
@@ -63,7 +64,15 @@ export default function SeriesDetail({ params }) {
         {/* Series Header */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
           <div className="relative h-64 md:h-80">
-            <div className="w-full h-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 flex items-center justify-center">
+            <Image
+              src={seriesData.coverImage}
+              alt={seriesData.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white">
                 <BookOpen className="h-24 w-24 mx-auto mb-4 animate-bounce-gentle" />
                 <h1 className="font-kid text-2xl md:text-4xl">{seriesData.title}</h1>

@@ -70,9 +70,17 @@ export default function StoryDetail({ params }) {
         </div>
 
         {/* Story Header - Enhanced */}
-        <div className="mb-6 md:mb-8 overflow-hidden border-4 border-rainbow-yellow/40 bg-gradient-to-br from-rainbow-red/10 via-rainbow-yellow/10 to-rainbow-blue/10 shadow-2xl hover:shadow-rainbow-purple/30 transition-all duration-500 hover:scale-105 rounded-3xl animate-scale-in">
+        <div className="mb-6 md:mb-8 overflow-hidden border-4 border-rainbow-yellow/40 bg-gradient-to-br from-rainbow-red/10 via-rainbow-yellow/10 to-rainbow-blue/10 shadow-2xl hover:shadow-rainbow-purple/30 transition-all duration-500 hover:scale-102 rounded-3xl animate-scale-in">
           <div className="relative h-48 md:h-64 lg:h-80">
-            <div className="w-full h-full bg-gradient-to-br from-rainbow-purple to-rainbow-blue flex items-center justify-center">
+            <Image
+              src={story.image}
+              alt={story.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white">
                 <div className="text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce-gentle">📖</div>
                 <h1 className="font-kid text-2xl md:text-3xl lg:text-5xl mb-2 drop-shadow-2xl text-shadow-lg">{story.title}</h1>
@@ -96,17 +104,17 @@ export default function StoryDetail({ params }) {
 
             {/* Story Info - Enhanced */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
-              <div className="p-3 md:p-4 text-center border-4 border-rainbow-blue/40 bg-gradient-to-br from-rainbow-blue/10 to-rainbow-blue/20 hover:scale-105 transition-all duration-300 rounded-2xl">
+              <div className="p-3 md:p-4 text-center border-4 border-rainbow-blue/40 bg-gradient-to-br from-rainbow-blue/10 to-rainbow-blue/20 hover:scale-102 transition-all duration-300 rounded-2xl">
                 <Users className="w-6 h-6 md:w-8 md:h-8 text-rainbow-blue mx-auto mb-2" />
                 <div className="font-comic font-bold text-xs md:text-sm text-muted-foreground">Age Group</div>
                 <div className="font-kid text-base md:text-lg text-foreground">{story.ageGroup}</div>
               </div>
-              <div className="p-3 md:p-4 text-center border-4 border-rainbow-green/40 bg-gradient-to-br from-rainbow-green/10 to-rainbow-green/20 hover:scale-105 transition-all duration-300 rounded-2xl">
+              <div className="p-3 md:p-4 text-center border-4 border-rainbow-green/40 bg-gradient-to-br from-rainbow-green/10 to-rainbow-green/20 hover:scale-102 transition-all duration-300 rounded-2xl">
                 <Clock className="w-6 h-6 md:w-8 md:h-8 text-rainbow-green mx-auto mb-2" />
                 <div className="font-comic font-bold text-xs md:text-sm text-muted-foreground">Reading Time</div>
                 <div className="font-kid text-base md:text-lg text-foreground">{story.readingTime}</div>
               </div>
-              <div className="p-3 md:p-4 text-center border-4 border-rainbow-purple/40 bg-gradient-to-br from-rainbow-purple/10 to-rainbow-purple/20 hover:scale-105 transition-all duration-300 rounded-2xl">
+              <div className="p-3 md:p-4 text-center border-4 border-rainbow-purple/40 bg-gradient-to-br from-rainbow-purple/10 to-rainbow-purple/20 hover:scale-102 transition-all duration-300 rounded-2xl">
                 <Heart className="w-6 h-6 md:w-8 md:h-8 text-rainbow-purple mx-auto mb-2" />
                 <div className="font-comic font-bold text-xs md:text-sm text-muted-foreground">Category</div>
                 <div className="font-kid text-base md:text-lg text-foreground">{story.category}</div>
@@ -115,20 +123,10 @@ export default function StoryDetail({ params }) {
 
             {/* Enhanced Action Buttons */}
             <div className="text-center mb-4 md:mb-6">
-              <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-4 mb-6">
-                <div className="bg-rainbow-red/30 px-3 py-1 md:px-4 md:py-2 rounded-full font-comic text-xs md:text-sm border-2 border-rainbow-red/40">
-                  🎯 Follow along with the story!
-                </div>
-                <div className="bg-rainbow-blue/30 px-3 py-1 md:px-4 md:py-2 rounded-full font-comic text-xs md:text-sm border-2 border-rainbow-blue/40">
-                  🌟 Can you spot the lesson?
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               <button
                 onClick={handleReadAloud}
-                className="bg-rainbow-yellow/50 hover:bg-rainbow-yellow/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-yellow/60"
+                className="bg-rainbow-yellow/50 hover:bg-rainbow-yellow/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-yellow/60"
               >
                 {isReading ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
                 <span className="hidden sm:inline text-xs md:text-sm">{isReading ? '🔇 Stop' : '🔊 Read'}</span>
@@ -137,7 +135,7 @@ export default function StoryDetail({ params }) {
               {story.wordHelpers && story.wordHelpers.length > 0 && (
                 <button
                   onClick={() => setShowWordHelpers(!showWordHelpers)}
-                  className="bg-rainbow-purple/50 hover:bg-rainbow-purple/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-purple/60"
+                  className="bg-rainbow-purple/50 hover:bg-rainbow-purple/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-purple/60"
                 >
                   <HelpCircle className="h-4 w-4" />
                   <span className="hidden sm:inline text-xs md:text-sm">📚 Words</span>
@@ -146,7 +144,7 @@ export default function StoryDetail({ params }) {
 
               <Link
                 href={`/spelling-game/${story.id}`}
-                className="bg-rainbow-green/50 hover:bg-rainbow-green/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-green/60"
+                className="bg-rainbow-green/50 hover:bg-rainbow-green/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-green/60"
               >
                 <GamepadIcon className="h-4 w-4" />
                 <span className="hidden sm:inline text-xs md:text-sm">🎮 Spell</span>
@@ -154,11 +152,12 @@ export default function StoryDetail({ params }) {
 
               <Link
                 href={`/story-questions/${story.id}`}
-                className="bg-rainbow-blue/50 hover:bg-rainbow-blue/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-blue/60"
+                className="bg-rainbow-blue/50 hover:bg-rainbow-blue/70 text-white font-comic font-bold px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-rainbow-blue/60"
               >
                 <HelpCircle className="h-4 w-4" />
                 <span className="hidden sm:inline text-xs md:text-sm">❓ Quiz</span>
               </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -295,9 +294,9 @@ export default function StoryDetail({ params }) {
               {section.image && (
                 <div className="relative">
                   <div className="text-center mb-2 md:mb-4">
-                    <div className="inline-flex items-center gap-2 bg-rainbow-yellow/30 px-4 py-2 md:px-6 md:py-3 rounded-full border-4 border-rainbow-yellow/50">
+                    <div className="inline-flex items-center gap-2 bg-white/90 px-4 py-2 md:px-6 md:py-3 rounded-full border-4 border-rainbow-yellow/70 shadow-lg">
                       <span className="text-lg md:text-2xl">🎨</span>
-                      <span className="font-kid text-base md:text-xl text-rainbow-yellow font-bold drop-shadow-lg">
+                      <span className="font-kid text-base md:text-xl text-gray-800 font-bold">
                         Scene {index + 1}
                       </span>
                       <span className="text-lg md:text-2xl">✨</span>
@@ -305,12 +304,14 @@ export default function StoryDetail({ params }) {
                   </div>
                   
                   <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border-4 border-rainbow-red/50 shadow-2xl transform hover:scale-105 transition-all duration-500 hover:shadow-rainbow-purple/40">
-                    <div className="w-full h-48 md:h-64 lg:h-80 bg-gradient-to-br from-rainbow-purple to-rainbow-blue flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="text-5xl md:text-7xl mb-4 animate-bounce-gentle">🎨</div>
-                        <p className="text-lg md:text-xl font-medium font-comic">Story Illustration</p>
-                      </div>
-                    </div>
+                    <Image
+                      src={section.image}
+                      alt={`${story.title} - Scene ${index + 1}`}
+                      width={800}
+                      height={400}
+                      className="w-full h-48 md:h-64 lg:h-80 object-cover"
+                      priority={index === 0}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-rainbow-purple/20 via-transparent to-rainbow-yellow/10 pointer-events-none"></div>
                     
                     {/* Keep only book icon */}
@@ -380,7 +381,7 @@ export default function StoryDetail({ params }) {
           </div>
         </div>
 
-        {/* Enhanced Feedback Section */}
+        {/* Enhanced Feedback Section - Moved to Middle */}
         <div className="mb-6 md:mb-8 animate-slide-up">
           <div className="bg-gradient-to-br from-rainbow-purple/30 to-rainbow-blue/30 border-4 border-rainbow-purple/50 shadow-2xl hover:shadow-rainbow-blue/40 transition-all duration-500 rounded-3xl p-4 md:p-6">
             <div className="text-center">
@@ -406,8 +407,8 @@ export default function StoryDetail({ params }) {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-6">
               <div className="space-y-3">
-                <div className="bg-rainbow-yellow/40 p-3 md:p-4 rounded-xl border-4 border-rainbow-yellow/60 hover:scale-105 transition-all duration-300">
-                  <h3 className="font-comic font-bold text-rainbow-yellow mb-1 md:mb-2 text-sm flex items-center gap-2">
+                <div className="bg-white/90 p-3 md:p-4 rounded-xl border-4 border-rainbow-yellow/60 hover:scale-105 transition-all duration-300 shadow-lg">
+                  <h3 className="font-comic font-bold text-gray-800 mb-1 md:mb-2 text-sm flex items-center gap-2">
                     📚 Reading Challenge
                   </h3>
                   <div className="space-y-2">

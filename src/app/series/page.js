@@ -58,34 +58,6 @@ export default function Series() {
           </p>
         </div>
 
-        {/* Featured Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="card-modern text-center">
-            <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <BookOpen className="h-8 w-8 text-indigo-600 animate-bounce-gentle" />
-            </div>
-            <div className="text-2xl font-bold text-foreground">{series.length}</div>
-            <div className="text-muted-foreground font-comic">Active Series</div>
-          </div>
-          
-          <div className="card-modern text-center">
-            <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Star className="h-8 w-8 text-green-600 animate-bounce-gentle" style={{animationDelay: '0.5s'}} />
-            </div>
-            <div className="text-2xl font-bold text-foreground">
-              {series.reduce((acc, s) => acc + s.publishedChapters, 0)}
-            </div>
-            <div className="text-muted-foreground font-comic">Total Chapters</div>
-          </div>
-          
-          <div className="card-modern text-center">
-            <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="h-8 w-8 text-purple-600 animate-bounce-gentle" style={{animationDelay: '1s'}} />
-            </div>
-            <div className="text-2xl font-bold text-foreground">Weekly</div>
-            <div className="text-muted-foreground font-comic">New Updates</div>
-          </div>
-        </div>
 
         {/* Search and Filters */}
         <div className="card-modern mb-8">

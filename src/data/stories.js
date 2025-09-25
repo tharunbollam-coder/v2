@@ -14,7 +14,7 @@ One day, Shell the tortoise said quietly, "Zippy, would you like to have a race 
 All the animals laughed. "A tortoise racing a rabbit? That's silly!" they said.
 
 But Shell was determined. "I may be slow, but I never give up," he said with a smile.`,
-        image: "/images/tortoise-hare-1.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       },
       {
         text: `The race began at sunrise. Zippy zoomed ahead so quickly that Shell could barely see him! "This is too easy," thought Zippy. "I'll take a little nap and still win easily."
@@ -22,7 +22,7 @@ But Shell was determined. "I may be slow, but I never give up," he said with a s
 So Zippy lay down under a shady tree and fell fast asleep.
 
 Meanwhile, Shell kept walking. Step by step, slowly but surely, he moved forward. He never stopped, even when he felt tired.`,
-        image: "/images/tortoise-hare-2.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       },
       {
         text: `When Zippy woke up, the sun was setting! He looked ahead and saw Shell just crossing the finish line!
@@ -32,13 +32,13 @@ Meanwhile, Shell kept walking. Step by step, slowly but surely, he moved forward
 Zippy learned an important lesson that day. He ran up to Shell and said, "I'm sorry for bragging. You taught me that being consistent and never giving up is more important than just being fast."
 
 From that day on, Zippy and Shell became the best of friends, and they often raced together just for fun!`,
-        image: "/images/tortoise-hare-3.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       }
     ],
     moralLesson: "Slow and steady wins the race. Consistency and determination are more valuable than natural talent without effort.",
     ageGroup: "4-8 years",
     readingTime: "5 minutes",
-    image: "/images/tortoise-hare.jpg",
+    image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     category: "Classic Fables",
     wordHelpers: [
       {
@@ -73,7 +73,7 @@ The second little pig, Stick, wanted to play too, but he thought a little more a
 The third little pig, Brick, worked very hard all day long. He carefully built his house out of strong bricks. His brothers laughed at him. "Why are you working so hard? Come play with us!"
 
 But Brick said, "I want to build a house that will keep me safe."`,
-        image: "/images/three-pigs-1.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       },
       {
         text: `One day, a wolf came to the forest. He was very hungry and saw the three houses.
@@ -89,7 +89,7 @@ Next, the wolf went to Stick's house. "Little pigs, little pigs, let me come in!
 "Not by the hair on our chinny-chin-chins!" they said.
 
 The wolf huffed and puffed and blew down the stick house too! Both pigs ran to Brick's house.`,
-        image: "/images/three-pigs-2.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       },
       {
         text: `When the wolf reached the brick house, he huffed and puffed with all his might, but the house stood strong!
@@ -99,13 +99,13 @@ The wolf huffed and puffed and blew down the stick house too! Both pigs ran to B
 The three brothers were safe! Straw and Stick thanked Brick for his hard work. "You were right to work so hard," they said. "Next time, we'll build strong houses too!"
 
 From then on, all three brothers worked together to build strong, safe homes for everyone in the forest.`,
-        image: "/images/three-pigs-3.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       }
     ],
     moralLesson: "Hard work and planning ahead keep us safe. Taking shortcuts might seem easy, but doing things properly is always better.",
     ageGroup: "3-7 years",
     readingTime: "6 minutes",
-    image: "/images/three-pigs.jpg",
+    image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     category: "Classic Fables",
     wordHelpers: [
       {
@@ -139,7 +139,7 @@ Hopper laughed. "Winter is so far away! Don't worry about it now. Come dance wit
 But Annie continued working. "I want to be ready," she said kindly. "You should think about winter too."
 
 "I'll worry about that later," said Hopper, and he continued playing his music.`,
-        image: "/images/ant-grasshopper-1.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       },
       {
         text: `When winter arrived, snow covered the ground. There were no flowers, no seeds, and no food to be found anywhere.
@@ -157,13 +157,13 @@ Annie looked at her friend with kind eyes. "Of course, Hopper. Come in and warm 
 Hopper agreed happily. From the next summer on, he spent his mornings helping Annie collect food, and his afternoons they both enjoyed music and dancing together.
 
 They learned that work and play can both have their place in life!`,
-        image: "/images/ant-grasshopper-2.jpg"
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
       }
     ],
     moralLesson: "It's important to work hard and prepare for the future, but we can also make time for fun and friendship.",
     ageGroup: "5-9 years",
     readingTime: "5 minutes",
-    image: "/images/ant-grasshopper.jpg",
+    image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     category: "Classic Fables",
     wordHelpers: [
       {

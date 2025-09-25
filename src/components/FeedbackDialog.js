@@ -52,7 +52,7 @@ const FeedbackDialog = ({ storyTitle }) => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="btn-primary shadow-colored hover:shadow-strong flex items-center space-x-2 w-full sm:w-auto"
+        className="btn-primary shadow-colored hover:shadow-strong flex items-center justify-center space-x-2 mx-auto px-6 py-3"
       >
         <MessageCircle className="w-5 h-5" />
         <span>💬 Share Your Thoughts</span>
@@ -106,7 +106,7 @@ const FeedbackDialog = ({ storyTitle }) => {
                     key={star}
                     type="button"
                     onClick={() => setRating(star)}
-                    className="transition-all duration-200 hover:scale-110 focus:outline-none"
+                    className="transition-all duration-200 hover:scale-105 focus:outline-none"
                     aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                   >
                     <Star
@@ -150,7 +150,7 @@ const FeedbackDialog = ({ storyTitle }) => {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="flex-1 px-6 py-3 rounded-xl border-2 border-gray-300 bg-white hover:bg-gray-50 font-comic font-bold text-gray-700 transition-all duration-200 hover:scale-105"
+                className="flex-1 px-6 py-3 rounded-xl border-2 border-gray-300 bg-white hover:bg-gray-50 font-comic font-bold text-gray-700 transition-all duration-200 hover:scale-102"
               >
                 Maybe Later
               </button>

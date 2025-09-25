@@ -13,12 +13,13 @@ export default function StoryCard({ story, className }) {
     )}>
       {/* Image Section */}
       <div className="relative h-52 overflow-hidden rounded-xl mb-6">
-        <div className="w-full h-full bg-gradient-primary flex items-center justify-center">
-          <div className="text-center text-white">
-            <BookOpen className="h-16 w-16 mx-auto mb-2 animate-bounce-gentle" />
-            <p className="font-medium">Story Illustration</p>
-          </div>
-        </div>
+        <Image
+          src={story.image}
+          alt={story.title}
+          fill
+          className="object-cover group-hover:scale-102 transition-transform duration-300"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         <div className="absolute top-4 right-4">
           <span className="glass text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-md">

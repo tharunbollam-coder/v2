@@ -9,7 +9,7 @@ export const series = [
     publishedChapters: 3,
     status: 'ongoing',
     publishSchedule: "New chapter every Monday",
-    coverImage: "/images/magic-forest.jpg",
+    coverImage: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     tags: ["Magic", "Friendship", "Adventure", "Problem Solving"],
     rating: 4.8,
     subscribers: 1250,
@@ -22,7 +22,7 @@ export const series = [
         isPublished: true,
         publishDate: "2024-01-01",
         readingTime: "4 minutes",
-        image: "/images/magic-forest-ch1.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: [
           {
             text: `Luna had always loved walking through the woods behind her house, but today something felt different. As she walked along her favorite path, she noticed a soft, blue glow coming from behind a large oak tree.
@@ -32,7 +32,7 @@ export const series = [
 Curious, she tiptoed toward the glow and discovered the most beautiful mushroom she had ever seen. It was as tall as her knee and sparkled with tiny blue and silver lights, like stars had been captured inside it.
 
 Suddenly, a tiny voice squeaked, "Don't touch it! That's my home!"`,
-            image: "/images/magic-forest-ch1-1.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           },
           {
             text: `Luna looked around, startled. "Who said that?"
@@ -44,7 +44,7 @@ A small fairy, no bigger than Luna's thumb, flew out from behind the mushroom. S
 Luna's eyes widened with wonder. "A real fairy! And what's a Gateway Mushroom?"
 
 Pip smiled. "It's the entrance to the magical part of the Whispering Woods. Would you like to see it?"`,
-            image: "/images/magic-forest-ch1-2.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           }
         ]
       },
@@ -56,7 +56,7 @@ Pip smiled. "It's the entrance to the magical part of the Whispering Woods. Woul
         isPublished: true,
         publishDate: "2024-01-08",
         readingTime: "5 minutes",
-        image: "/images/magic-forest-ch2.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: [
           {
             text: `As Luna and Pip stepped through the glowing mushroom, the world around them shimmered and changed. The ordinary forest became filled with sparkling streams, flowers that chimed like bells, and trees that seemed to whisper secrets.
@@ -66,7 +66,7 @@ Pip smiled. "It's the entrance to the magical part of the Whispering Woods. Woul
 But their wonder was interrupted by a sad, echoing cry. "Waaaah! Mama! Where are you?"
 
 "Oh no," said Pip, her wings fluttering with worry. "That sounds like someone is lost!"`,
-            image: "/images/magic-forest-ch2-1.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           }
         ]
       },
@@ -78,7 +78,7 @@ But their wonder was interrupted by a sad, echoing cry. "Waaaah! Mama! Where are
         isPublished: true,
         publishDate: "2024-01-15",
         readingTime: "4 minutes",
-        image: "/images/magic-forest-ch3.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: [
           {
             text: `After helping the baby dragon Ember find his way home, Luna, Pip, and their new friend Willow the wise owl continued exploring the magical woods.
@@ -88,7 +88,7 @@ But their wonder was interrupted by a sad, echoing cry. "Waaaah! Mama! Where are
 But when they arrived at the river, they found a problem. The old wooden bridge that crossed to the waterfall had broken in half during the last storm.
 
 "Oh no!" cried Pip. "How will anyone get across to see the falls now?"`,
-            image: "/images/magic-forest-ch3-1.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           }
         ]
       },
@@ -100,7 +100,7 @@ But when they arrived at the river, they found a problem. The old wooden bridge 
         isPublished: false,
         publishDate: "2024-01-22",
         readingTime: "5 minutes",
-        image: "/images/magic-forest-ch4.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: []
       }
     ]
@@ -115,7 +115,7 @@ But when they arrived at the river, they found a problem. The old wooden bridge 
     publishedChapters: 2,
     status: 'ongoing',
     publishSchedule: "New chapter every Wednesday",
-    coverImage: "/images/space-explorers.jpg",
+    coverImage: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     tags: ["Space", "Science", "Exploration", "Teamwork"],
     rating: 4.9,
     subscribers: 980,
@@ -128,7 +128,7 @@ But when they arrived at the river, they found a problem. The old wooden bridge 
         isPublished: true,
         publishDate: "2024-01-03",
         readingTime: "5 minutes",
-        image: "/images/space-explorers-ch1.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: [
           {
             text: `"All systems ready for launch!" announced Captain Zara as she checked the colorful buttons on the control panel of their spaceship, the 'Friendship Star.'
@@ -138,7 +138,7 @@ Zara was only 10 years old, but she was the youngest space captain in the galaxy
 "Destination: Planet Sparkle!" called out Marcus, adjusting his thick glasses. "It's three million miles away!"
 
 "That sounds far," said Aisha nervously. "What if we get lost?"`,
-            image: "/images/space-explorers-ch1-1.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           }
         ]
       },
@@ -150,7 +150,7 @@ Zara was only 10 years old, but she was the youngest space captain in the galaxy
         isPublished: true,
         publishDate: "2024-01-10",
         readingTime: "6 minutes",
-        image: "/images/space-explorers-ch2.jpg",
+        image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
         content: [
           {
             text: `After a smooth landing on Planet Sparkle, Captain Zara and her crew put on their special space suits and stepped outside. The planet was even more beautiful than they had imagined!
@@ -160,7 +160,7 @@ Zara was only 10 years old, but she was the youngest space captain in the galaxy
 "The crystals are singing!" Marcus exclaimed, cupping his ear. Indeed, a gentle, musical humming filled the air.
 
 Robo's sensors beeped excitedly. "Captain, I'm detecting friendly life forms in the caves. Should we investigate?"`,
-            image: "/images/space-explorers-ch2-1.jpg"
+            image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png"
           }
         ]
       }

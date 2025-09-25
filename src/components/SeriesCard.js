@@ -26,17 +26,18 @@ export default function SeriesCard({ series, className }) {
 
   return (
     <div className={cn(
-      "bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105",
+      "bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-102",
       className
     )}>
       {/* Image Section */}
       <div className="relative h-48 overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 flex items-center justify-center">
-          <div className="text-center text-white">
-            <BookOpen className="h-16 w-16 mx-auto mb-2 animate-bounce-gentle" />
-            <p className="font-bold">Series Cover</p>
-          </div>
-        </div>
+        <Image
+          src={series.coverImage}
+          alt={series.title}
+          fill
+          className="object-cover group-hover:scale-102 transition-transform duration-300"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         
         {/* Status Badge */}
