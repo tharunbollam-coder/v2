@@ -2,8 +2,8 @@ import { FileText, Users, Shield, Heart } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
-  title: "Terms of Service - KidsStories",
-  description: "Read our Terms of Service to understand how to use KidsStories responsibly and safely.",
+  title: "Terms of Service - Ekadanta Stories",
+  description: "Read our Terms of Service to understand how to use Ekadanta Stories responsibly and safely.",
 };
 
 export default function Terms() {
@@ -71,11 +71,11 @@ export default function Terms() {
         {/* Main Content */}
         <div className="bg-white rounded-2xl shadow-lg p-8 space-y-8">
           <section>
-            <h2 className="font-kid text-2xl text-gray-800 mb-4">Welcome to KidsStories</h2>
+            <h2 className="font-kid text-2xl text-gray-800 mb-4">Welcome to Ekadanta Stories</h2>
             <div className="font-comic text-gray-700 space-y-4">
               <p>
-                Welcome to KidsStories! These Terms of Service ("Terms") explain how you can use our website and services. 
-                By using KidsStories, you agree to these terms.
+                Welcome to Ekadanta Stories! These Terms of Service ("Terms") explain how you can use our website and services. 
+                By using Ekadanta Stories, you agree to these terms.
               </p>
               <p>
                 We've written these terms in simple language because we believe everyone should understand the rules. 
@@ -111,7 +111,7 @@ export default function Terms() {
             <h2 className="font-kid text-2xl text-gray-800 mb-4">Our Content</h2>
             <div className="font-comic text-gray-700 space-y-4">
               <p>
-                All stories, games, and other content on KidsStories are created by our team or licensed from other creators. 
+                All stories, games, and other content on Ekadanta Stories are created by our team or licensed from other creators. 
                 This content is protected by copyright and other intellectual property laws.
               </p>
               <p>
@@ -139,7 +139,7 @@ export default function Terms() {
             <h2 className="font-kid text-2xl text-gray-800 mb-4">Community Guidelines</h2>
             <div className="font-comic text-gray-700 space-y-4">
               <p>
-                KidsStories is a family-friendly community. We expect everyone to be respectful and kind.
+                Ekadanta Stories is a family-friendly community. We expect everyone to be respectful and kind.
               </p>
               
               <p><strong>Be respectful:</strong></p>
@@ -216,8 +216,8 @@ export default function Terms() {
                 Have questions about these Terms? We're here to help!
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
-                <p><strong>Email:</strong> legal@kidsstories.com</p>
-                <p><strong>General Contact:</strong> hello@kidsstories.com</p>
+                <p><strong>Email:</strong> legal@ekadantastories.com</p>
+                <p><strong>General Contact:</strong> hello@ekadantastories.com</p>
                 <p><strong>Address:</strong> 123 Story Lane, Reading City, RC 12345</p>
                 <p><strong>Phone:</strong> +1 (555) 123-KIDS</p>
               </div>

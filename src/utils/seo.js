@@ -2,12 +2,12 @@ export function generateWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "KidsStories",
+    "name": "Ekadanta Stories",
     "description": "Educational stories for children with moral lessons, interactive reading activities, and games.",
-    "url": "https://kidsstories.com",
+    "url": "https://ekadantastories.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://kidsstories.com/search?q={search_term_string}",
+      "target": "https://ekadantastories.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -22,11 +22,11 @@ export function generateStorySchema(story) {
     "image": story.image,
     "author": {
       "@type": "Organization",
-      "name": "KidsStories"
+      "name": "Ekadanta Stories"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "KidsStories"
+      "name": "Ekadanta Stories"
     },
     "datePublished": new Date().toISOString(),
     "articleSection": story.category,
@@ -42,7 +42,7 @@ export function generateBreadcrumbSchema(items) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": `https://kidsstories.com${item.href}`
+      "item": `https://ekadantastories.com${item.href}`
     }))
   };
 }

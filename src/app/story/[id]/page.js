@@ -82,7 +82,6 @@ export default function StoryDetail({ params }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white">
-                <div className="text-5xl md:text-7xl mb-4 md:mb-6 animate-bounce-gentle">📖</div>
                 <h1 className="font-kid text-2xl md:text-3xl lg:text-5xl mb-2 drop-shadow-2xl text-shadow-lg">{story.title}</h1>
                 <p className="text-white/95 text-base md:text-lg font-comic drop-shadow-lg">✨ An Educational Adventure ✨</p>
               </div>

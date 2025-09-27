@@ -2,8 +2,8 @@ import { Shield, Eye, Lock, Users } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
-  title: "Privacy Policy - KidsStories",
-  description: "Learn how KidsStories protects your privacy and keeps children safe online. Our commitment to data protection and child safety.",
+  title: "Privacy Policy - Ekadanta Stories",
+  description: "Learn how Ekadanta Stories protects your privacy and keeps children safe online. Our commitment to data protection and child safety.",
 };
 
 export default function Privacy() {
@@ -162,7 +162,7 @@ export default function Privacy() {
                 If you have any questions about this Privacy Policy or our practices, please contact us:
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
-                <p><strong>Email:</strong> privacy@kidsstories.com</p>
+                <p><strong>Email:</strong> privacy@ekadantastories.com</p>
                 <p><strong>Address:</strong> 123 Story Lane, Reading City, RC 12345</p>
                 <p><strong>Phone:</strong> +1 (555) 123-KIDS</p>
               </div>

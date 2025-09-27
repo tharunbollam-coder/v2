@@ -42,7 +42,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email Us",
-      info: "hello@kidsstories.com",
+      info: "hello@ekadantastories.com",
       description: "We'll get back to you within 24 hours"
     },
     {

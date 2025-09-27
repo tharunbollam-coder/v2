@@ -2,8 +2,8 @@ import { Heart, BookOpen, Users, Star, Sparkles, Target } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
-  title: "About KidsStories - Our Mission to Inspire Young Minds",
-  description: "Learn about KidsStories' mission to create magical educational content that inspires children to read, learn, and grow through engaging storytelling.",
+  title: "About Ekadanta Stories - Our Mission to Inspire Young Minds",
+  description: "Learn about Ekadanta Stories' mission to create magical educational content that inspires children to read, learn, and grow through engaging storytelling.",
 };
 
 export default function About() {
@@ -65,7 +65,7 @@ export default function About() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Heart className="w-10 h-10 text-red-500 animate-pulse" />
             <h1 className="font-kid text-4xl md:text-5xl text-gradient-rainbow">
-              About KidsStories
+              About Ekadanta Stories
             </h1>
             <Heart className="w-10 h-10 text-red-500 animate-pulse" />
           </div>
@@ -83,12 +83,12 @@ export default function About() {
           
           <div className="prose prose-lg max-w-none font-comic text-gray-700 leading-relaxed">
             <p className="text-center text-xl mb-6">
-              At KidsStories, we believe that every child deserves access to magical, educational stories 
+              At Ekadanta Stories, we believe that every child deserves access to magical, educational stories 
               that spark imagination, teach valuable life lessons, and foster a lifelong love of reading.
             </p>
             
             <p className="mb-4">
-              Founded by parents and educators, KidsStories was born from the simple observation that 
+              Founded by parents and educators, Ekadanta Stories was born from the simple observation that 
               children learn best when they're engaged, entertained, and emotionally connected to the 
               content. We saw a need for high-quality, educational stories that could compete with 
               the flashy distractions of modern media while still delivering meaningful learning experiences.
