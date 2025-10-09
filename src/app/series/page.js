@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Filter, BookOpen, Sparkles, X, Star } from 'lucide-react';
+import { Search, BookOpen, Sparkles, X } from 'lucide-react';
 import SeriesCard from '@/components/SeriesCard';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { series } from '@/data/series';

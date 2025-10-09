@@ -11,26 +11,12 @@ export default function About() {
     { label: 'About', href: '/about' }
   ];
 
-  const teamMembers = [
-    {
-      name: "Sarah Johnson",
-      role: "Story Creator",
-      description: "Former elementary teacher with 15 years of experience creating engaging educational content for children.",
-      icon: BookOpen
-    },
-    {
-      name: "Mike Chen",
-      role: "Educational Designer", 
-      description: "Child development expert who ensures our stories support healthy learning and emotional growth.",
-      icon: Users
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Illustration Director",
-      description: "Award-winning children's book illustrator who brings our magical worlds to life with beautiful artwork.",
-      icon: Star
-    }
-  ];
+  const founder = {
+    name: "Founder & Creator",
+    role: "Solo Developer",
+    description: "Passionate about creating educational content for children. Just starting this journey to build magical stories that inspire young minds.",
+    icon: BookOpen
+  };
 
   const values = [
     {
@@ -88,24 +74,23 @@ export default function About() {
             </p>
             
             <p className="mb-4">
-              Founded by parents and educators, Ekadanta Stories was born from the simple observation that 
-              children learn best when they're engaged, entertained, and emotionally connected to the 
-              content. We saw a need for high-quality, educational stories that could compete with 
-              the flashy distractions of modern media while still delivering meaningful learning experiences.
+              Ekadanta Stories is a new project born from the passion to create educational content that 
+              children will love. As a solo developer, I'm just beginning this journey to build 
+              high-quality, educational stories that can engage young minds while delivering 
+              meaningful learning experiences.
             </p>
             
             <p className="mb-4">
-              Our team of experienced educators, child development specialists, and creative storytellers 
-              work together to create content that not only entertains but also builds character, 
-              emotional intelligence, and critical thinking skills. Every story is carefully crafted 
-              to align with developmental milestones and educational standards while maintaining the 
-              magic and wonder that makes reading an adventure.
+              This is the early stage of what I hope will become a wonderful collection of stories 
+              that not only entertain but also help build character, emotional intelligence, and 
+              critical thinking skills. Each story is being carefully crafted to be age-appropriate 
+              while maintaining the magic and wonder that makes reading an adventure.
             </p>
             
             <p>
-              We're committed to providing a safe, ad-free environment where children can explore, 
-              learn, and grow at their own pace. Because we believe that the stories we tell our 
-              children today shape the adults they become tomorrow.
+              I'm committed to providing a safe, ad-free environment where children can explore, 
+              learn, and grow at their own pace. This is just the beginning, and I'm excited to 
+              grow this collection of stories over time.
             </p>
           </div>
         </div>
@@ -130,43 +115,42 @@ export default function About() {
           </div>
         </div>
 
-        {/* Team Section */}
+        {/* Founder Section */}
         <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 mb-8">
-          <h2 className="font-kid text-3xl text-center text-gray-800 mb-8">Meet Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="bg-gradient-to-r from-purple-100 to-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <member.icon className="h-8 w-8 text-purple-600" />
-                </div>
-                <h3 className="font-comic font-bold text-lg text-gray-800 mb-1">{member.name}</h3>
-                <p className="text-purple-600 font-medium mb-3">{member.role}</p>
-                <p className="font-comic text-sm text-gray-600">{member.description}</p>
+          <h2 className="font-kid text-3xl text-center text-gray-800 mb-8">About the Creator</h2>
+          <div className="max-w-md mx-auto">
+            <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-gradient-to-r from-purple-100 to-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <founder.icon className="h-8 w-8 text-purple-600" />
               </div>
-            ))}
+              <h3 className="font-comic font-bold text-lg text-gray-800 mb-1">{founder.name}</h3>
+              <p className="text-purple-600 font-medium mb-3">{founder.role}</p>
+              <p className="font-comic text-sm text-gray-600">{founder.description}</p>
+            </div>
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Current Status Section */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          <h2 className="font-kid text-3xl text-center text-gray-800 mb-8">Our Impact</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <h2 className="font-kid text-3xl text-center text-gray-800 mb-8">Current Status</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="p-4">
-              <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-              <div className="font-comic text-gray-600">Stories Created</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
+              <div className="font-comic text-gray-600">Stories Available</div>
             </div>
             <div className="p-4">
-              <div className="text-3xl font-bold text-pink-600 mb-2">10K+</div>
-              <div className="font-comic text-gray-600">Happy Readers</div>
-            </div>
-            <div className="p-4">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">25+</div>
-              <div className="font-comic text-gray-600">Countries Reached</div>
+              <div className="text-3xl font-bold text-indigo-600 mb-2">2</div>
+              <div className="font-comic text-gray-600">Series Started</div>
             </div>
             <div className="p-4">
               <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
               <div className="font-comic text-gray-600">Safe & Ad-Free</div>
             </div>
+          </div>
+          <div className="text-center mt-6">
+            <p className="font-comic text-gray-600 text-sm">
+              🌱 This is just the beginning! More stories and features are being added regularly.
+            </p>
           </div>
         </div>
 
@@ -174,8 +158,8 @@ export default function About() {
         <div className="text-center bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white">
           <h2 className="font-kid text-3xl mb-4">Join Our Story</h2>
           <p className="font-comic text-lg mb-6 max-w-2xl mx-auto">
-            Be part of our mission to inspire the next generation through the power of storytelling. 
-            Every child deserves access to magical, educational adventures.
+            Join me on this exciting journey to create magical, educational adventures for children. 
+            This is just the beginning, and I'd love to hear your feedback and suggestions!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

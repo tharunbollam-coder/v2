@@ -11,8 +11,8 @@ export const series = [
     publishSchedule: "New chapter every Monday",
     coverImage: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     tags: ["Magic", "Friendship", "Adventure", "Problem Solving"],
-    rating: 4.8,
-    subscribers: 1250,
+    rating: 0,
+    subscribers: 0,
     chapters: [
       {
         id: "chapter-1",
@@ -117,8 +117,8 @@ But when they arrived at the river, they found a problem. The old wooden bridge 
     publishSchedule: "New chapter every Wednesday",
     coverImage: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
     tags: ["Space", "Science", "Exploration", "Teamwork"],
-    rating: 4.9,
-    subscribers: 980,
+    rating: 0,
+    subscribers: 0,
     chapters: [
       {
         id: "space-chapter-1",

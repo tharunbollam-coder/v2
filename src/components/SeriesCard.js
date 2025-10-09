@@ -50,10 +50,16 @@ export default function SeriesCard({ series, className }) {
           </span>
         </div>
 
-        {/* Rating */}
+        {/* Rating or New Badge */}
         <div className="absolute top-4 left-4 flex items-center space-x-1 bg-white/90 rounded-full px-2 py-1">
-          <Star className="h-4 w-4 text-yellow-500 fill-current" />
-          <span className="text-sm font-bold text-gray-800">{series.rating}</span>
+          {series.rating > 0 ? (
+            <>
+              <Star className="h-4 w-4 text-yellow-500 fill-current" />
+              <span className="text-sm font-bold text-gray-800">{series.rating}</span>
+            </>
+          ) : (
+            <span className="text-sm font-bold text-blue-600">New!</span>
+          )}
         </div>
 
         <div className="absolute bottom-4 left-4 right-4">
