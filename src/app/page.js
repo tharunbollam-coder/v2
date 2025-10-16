@@ -30,7 +30,7 @@ export default function Home() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-8 h-8 text-rainbow-yellow animate-pulse" />
             <h1 className="font-kid text-4xl md:text-6xl text-gradient-rainbow">
-              Welcome to Ekadanta Stories!
+              Welcome to Modak StoryTime!
             </h1>
             <Sparkles className="w-8 h-8 text-rainbow-pink animate-pulse" />
           </div>

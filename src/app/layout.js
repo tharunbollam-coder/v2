@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ekadanta Stories - Educational Tales That Teach Life Lessons",
+  title: "Modak StoryTime - Educational Tales That Teach Life Lessons",
   description: "Discover magical educational stories for children ages 3-12. Interactive tales with moral lessons, reading activities, spelling games, and comprehension questions. Safe, fun learning!",
-  keywords: "ekadanta stories, educational stories for children, moral lessons kids, interactive reading activities, children's books online, bedtime stories with lessons",
+  keywords: "modak storytime, educational stories for children, moral lessons kids, interactive reading activities, children's books online, bedtime stories with lessons",
 };
 
 export default function RootLayout({ children }) {

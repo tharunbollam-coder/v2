@@ -27,7 +27,7 @@ export default function Navbar() {
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"></div>
             </div>
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent font-bold tracking-wide drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300">
-              Ekadanta Stories
+              Modak StoryTime
             </span>
           </Link>
 

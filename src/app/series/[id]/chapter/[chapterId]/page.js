@@ -10,6 +10,7 @@ import { cn } from '@/utils/cn';
 
 export default function ChapterDetail({ params }) {
   const [isReading, setIsReading] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
 
   const resolvedParams = use(params);
   const seriesData = series.find((s) => s.id === resolvedParams.id);
@@ -69,7 +70,8 @@ export default function ChapterDetail({ params }) {
         window.speechSynthesis.cancel();
         setIsReading(false);
       } else {
-        const utterance = new SpeechSynthesisUtterance(chapter.content[currentSection].text);
+        const fullText = chapter.content.map(section => section.text).join(' ');
+        const utterance = new SpeechSynthesisUtterance(fullText);
         utterance.rate = 0.8;
         utterance.pitch = 1.1;
         utterance.onend = () => setIsReading(false);

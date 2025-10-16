@@ -2,8 +2,8 @@ import { Heart, BookOpen, Users, Star, Sparkles, Target } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
-  title: "About Ekadanta Stories - Our Mission to Inspire Young Minds",
-  description: "Learn about Ekadanta Stories' mission to create magical educational content that inspires children to read, learn, and grow through engaging storytelling.",
+  title: "About Modak StoryTime - Our Mission to Inspire Young Minds",
+  description: "Learn about Modak StoryTime's mission to create magical educational content that inspires children to read, learn, and grow through engaging storytelling.",
 };
 
 export default function About() {
@@ -51,7 +51,7 @@ export default function About() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Heart className="w-10 h-10 text-red-500 animate-pulse" />
             <h1 className="font-kid text-4xl md:text-5xl text-gradient-rainbow">
-              About Ekadanta Stories
+              About Modak StoryTime
             </h1>
             <Heart className="w-10 h-10 text-red-500 animate-pulse" />
           </div>
@@ -69,12 +69,12 @@ export default function About() {
           
           <div className="prose prose-lg max-w-none font-comic text-gray-700 leading-relaxed">
             <p className="text-center text-xl mb-6">
-              At Ekadanta Stories, we believe that every child deserves access to magical, educational stories 
+              At Modak StoryTime, we believe that every child deserves access to magical, educational stories 
               that spark imagination, teach valuable life lessons, and foster a lifelong love of reading.
             </p>
             
             <p className="mb-4">
-              Ekadanta Stories is a new project born from the passion to create educational content that 
+              Modak StoryTime is a new project born from the passion to create educational content that 
               children will love. As a solo developer, I'm just beginning this journey to build 
               high-quality, educational stories that can engage young minds while delivering 
               meaningful learning experiences.

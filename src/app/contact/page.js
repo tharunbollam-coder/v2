@@ -1,68 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { Mail, MessageCircle, Phone, MapPin, Send, Heart } from 'lucide-react';
+import { Mail, MessageCircle, Phone, MapPin, Heart } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
   const breadcrumbItems = [
     { label: 'Contact', href: '/contact' }
   ];
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email Us",
-      info: "hello@ekadantastories.com",
+      info: "modakstorytime@gmail.com",
       description: "We'll get back to you within 24 hours"
     },
-    {
-      icon: MessageCircle,
-      title: "Live Chat",
-      info: "Available 9 AM - 5 PM EST",
-      description: "Chat with our friendly support team"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      info: "+1 (555) 123-KIDS",
-      description: "Monday to Friday, 9 AM - 5 PM EST"
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      info: "123 Story Lane, Reading City",
-      description: "Our magical headquarters"
-    }
   ];
 
   return (
@@ -85,120 +37,9 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="font-kid text-2xl text-gray-800 mb-6">Send us a Message</h2>
-            
-            {submitted ? (
-              <div className="text-center py-8">
-                <div className="text-6xl mb-4">🎉</div>
-                <h3 className="font-kid text-2xl text-green-600 mb-2">Message Sent!</h3>
-                <p className="font-comic text-gray-600 mb-4">
-                  Thank you for reaching out! We'll get back to you soon.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-200 hover:scale-105"
-                >
-                  Send Another Message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block font-comic font-bold text-gray-700 mb-2">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block font-comic font-bold text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block font-comic font-bold text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200"
-                  >
-                    <option value="">Select a topic</option>
-                    <option value="general">General Question</option>
-                    <option value="story-request">Story Request</option>
-                    <option value="technical">Technical Issue</option>
-                    <option value="feedback">Feedback</option>
-                    <option value="partnership">Partnership Inquiry</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block font-comic font-bold text-gray-700 mb-2">
-                    Your Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200 resize-vertical"
-                    placeholder="Tell us how we can help you..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center space-x-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
-
+        <div className="max-w-3xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8">
               <h2 className="font-kid text-2xl text-gray-800 mb-6">Get in Touch</h2>
               <p className="font-comic text-gray-600 mb-6">
@@ -236,7 +77,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-comic font-bold text-gray-700 mb-1">Can I suggest a story idea?</h4>
-                  <p className="font-comic text-sm text-gray-600">Absolutely! We love hearing story ideas from our community. Use the form to share yours!</p>
+                  <p className="font-comic text-sm text-gray-600">Absolutely! We love hearing story ideas from our community.</p>
                 </div>
               </div>
             </div>
@@ -244,7 +85,7 @@ export default function Contact() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl p-8 text-white mt-12">
           <h2 className="font-kid text-3xl mb-4">Join Our Community</h2>
           <p className="font-comic text-lg mb-6 max-w-2xl mx-auto">
             Stay updated with new stories, educational tips, and special events. 

@@ -2,12 +2,12 @@ export function generateWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Ekadanta Stories",
+    "name": "Modak StoryTime",
     "description": "Educational stories for children with moral lessons, interactive reading activities, and games.",
-    "url": "https://ekadantastories.com",
+    "url": "mailto:modakstorytime@gmail.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://ekadantastories.com/search?q={search_term_string}",
+      "target": "mailto:modakstorytime@gmail.com?subject=Search&body={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -22,11 +22,11 @@ export function generateStorySchema(story) {
     "image": story.image,
     "author": {
       "@type": "Organization",
-      "name": "Ekadanta Stories"
+      "name": "Modak StoryTime"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Ekadanta Stories"
+      "name": "Modak StoryTime"
     },
     "datePublished": new Date().toISOString(),
     "articleSection": story.category,
@@ -42,7 +42,7 @@ export function generateBreadcrumbSchema(items) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": `https://ekadantastories.com${item.href}`
+      "item": `mailto:modakstorytime@gmail.com`
     }))
   };
 }

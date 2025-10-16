@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Users, Lightbulb, Heart, Volume2, VolumeX, GamepadIcon, HelpCircle, BookOpen } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import FeedbackDialog from '@/components/FeedbackDialog';
 import { stories } from '@/data/stories';
 import { cn } from '@/utils/cn';
 
@@ -376,21 +375,6 @@ export default function StoryDetail({ params }) {
               <p className="font-comic text-base md:text-lg text-foreground leading-relaxed text-center font-bold">
                 💡 {story.moralLesson} 🌟
               </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced Feedback Section - Moved to Middle */}
-        <div className="mb-6 md:mb-8 animate-slide-up">
-          <div className="bg-gradient-to-br from-rainbow-purple/30 to-rainbow-blue/30 border-4 border-rainbow-purple/50 shadow-2xl hover:shadow-rainbow-blue/40 transition-all duration-500 rounded-3xl p-4 md:p-6">
-            <div className="text-center">
-              <h3 className="font-kid text-base md:text-xl mb-3 text-foreground flex items-center justify-center gap-2">
-                🌟 Did you enjoy this story? 💭
-              </h3>
-              <p className="font-comic text-muted-foreground mb-4 text-xs md:text-sm">
-                Your feedback helps us create even better stories for kids like you!
-              </p>
-              <FeedbackDialog storyTitle={story.title} />
             </div>
           </div>
         </div>

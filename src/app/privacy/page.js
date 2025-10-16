@@ -2,8 +2,8 @@ import { Shield, Eye, Lock, Users } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata = {
-  title: "Privacy Policy - Ekadanta Stories",
-  description: "Learn how Ekadanta Stories protects your privacy and keeps children safe online. Our commitment to data protection and child safety.",
+  title: "Privacy Policy - Modak StoryTime",
+  description: "Learn how Modak StoryTime protects your privacy and keeps children safe online. Our commitment to data protection and child safety.",
 };
 
 export default function Privacy() {
@@ -80,7 +80,6 @@ export default function Privacy() {
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>No Personal Information:</strong> We don't require accounts, names, or personal details to read stories</li>
                 <li><strong>Technical Data:</strong> Basic website analytics (page views, device type) to improve our service</li>
-                <li><strong>Contact Forms:</strong> Only when you voluntarily contact us through our contact form</li>
                 <li><strong>No Cookies:</strong> We don't use tracking cookies or store personal data locally</li>
               </ul>
             </div>
@@ -162,9 +161,7 @@ export default function Privacy() {
                 If you have any questions about this Privacy Policy or our practices, please contact us:
               </p>
               <div className="bg-gray-50 rounded-lg p-4">
-                <p><strong>Email:</strong> privacy@ekadantastories.com</p>
-                <p><strong>Address:</strong> 123 Story Lane, Reading City, RC 12345</p>
-                <p><strong>Phone:</strong> +1 (555) 123-KIDS</p>
+                <p><strong>Email:</strong> modakstorytime@gmail.com</p>
               </div>
             </div>
           </section>

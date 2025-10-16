@@ -20,7 +20,7 @@ export default function Footer() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full opacity-20 blur"></div>
               </div>
               <span className="text-3xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Ekadanta Stories
+                Modak StoryTime
               </span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md text-lg leading-relaxed">
@@ -96,7 +96,7 @@ export default function Footer() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
           <div className="text-center">
             <p className="text-gray-400 text-lg">
-              © {currentYear} <span className="text-indigo-400 font-semibold">Ekadanta Stories</span>. All rights reserved.
+              © {currentYear} <span className="text-indigo-400 font-semibold">Modak StoryTime</span>. All rights reserved.
             </p>
             <p className="text-gray-500 mt-2">
               Creating magical moments through storytelling ✨
