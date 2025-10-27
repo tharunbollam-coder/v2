@@ -45,6 +45,7 @@ From that day, children learned that no matter how many big things exist in the 
   readingTime: "4 minutes",
   image: "https://res.cloudinary.com/dogmybs69/image/upload/v1758793373/file_00000000f04861f488a3cdca8fa7d678_yphqxg.png",
   category: "Mythological Tales",
+  youtubeUrl: "https://www.youtube.com/watch?v=9yG1s2uB_2Y",
   wordHelpers: [
     {
       word: "crayons",

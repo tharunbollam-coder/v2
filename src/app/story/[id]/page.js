@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Users, Lightbulb, Heart, Volume2, VolumeX, GamepadIcon, HelpCircle, BookOpen } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
 import { stories } from '@/data/stories';
 import { cn } from '@/utils/cn';
 
@@ -265,6 +266,20 @@ export default function StoryDetail({ params }) {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* YouTube Embed */}
+        {story.youtubeUrl && (
+          <div className="mb-6 md:mb-8 animate-slide-up">
+            <div className="bg-gradient-to-br from-rainbow-red/20 to-rainbow-pink/20 border-4 border-rainbow-red/50 shadow-2xl hover:shadow-rainbow-pink/40 transition-all duration-500 rounded-3xl p-4 md:p-6">
+              <div className="text-center mb-6">
+                <h2 className="font-kid text-xl md:text-3xl text-foreground flex items-center justify-center gap-2 mb-2">
+                  🎬 Watch the Story! 🍿
+                </h2>
+              </div>
+              <YouTubeEmbed url={story.youtubeUrl} />
             </div>
           </div>
         )}

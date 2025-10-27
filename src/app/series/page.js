@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { Search, BookOpen, Sparkles, X } from 'lucide-react';
 import SeriesCard from '@/components/SeriesCard';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -38,6 +39,28 @@ export default function Series() {
   const breadcrumbItems = [
     { label: 'Series', href: '/series' }
   ];
+
+  if (series.length === 0) {
+    return (
+      <div className="min-h-screen py-8 px-4 flex items-center justify-center">
+        <div className="container mx-auto text-center">
+          <div className="text-6xl mb-4">🚀</div>
+          <h1 className="font-kid text-4xl md:text-5xl text-gradient-rainbow mb-4">
+            New Adventures Coming Soon!
+          </h1>
+          <p className="font-comic text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            We're busy writing exciting new story series for you. Check back soon!
+          </p>
+          <Link href="/stories">
+            <button className="btn-primary shadow-colored hover:shadow-strong font-comic font-bold flex items-center justify-center space-x-2 px-8 py-4 mx-auto">
+              <BookOpen className="w-5 h-5" />
+              <span>Explore Stories While You Wait</span>
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen py-8 px-4">
