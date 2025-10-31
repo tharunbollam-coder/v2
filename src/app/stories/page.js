@@ -1,24 +1,75 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { Search, Filter, BookOpen, Sparkles, X } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { Search, Filter, BookOpen, Sparkles, X, Loader2 } from 'lucide-react';
 import StoryCard from '@/components/StoryCard';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { stories } from '@/data/stories';
 import { cn } from '@/utils/cn';
+import { client } from '@/sanity/client';
+
+// Server-side data fetching
+export const dynamic = 'force-dynamic';
+
+// Sanity query to fetch all stories
+const ALL_STORIES_QUERY = `*[_type == "story"] | order(_createdAt desc) {
+  _id,
+  title,
+  summary,
+  "imageUrl": image,
+  category,
+  moralLesson,
+  slug {
+    current
+  },
+  readingTime,
+  ageGroup,
+  wordHelpers[] {
+    word,
+    definition,
+    pronunciation
+  }
+}`;
 
 export default function Stories() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("all");
+  const [stories, setStories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch stories from Sanity
+  useEffect(() => {
+    const fetchStories = async () => {
+      try {
+        const data = await client.fetch(ALL_STORIES_QUERY);
+        setStories(data || []);
+      } catch (err) {
+        console.error('Error fetching stories:', err);
+        setError('Failed to load stories. Please try again later.');
+        setStories([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchStories();
+  }, []);
+
+  // Ensure stories is an array before processing
+  const safeStories = Array.isArray(stories) ? stories : [];
+  
   // Get unique categories and age groups for filters
-  const categories = Array.from(new Set(stories.map(story => story.category)));
-  const ageGroups = Array.from(new Set(stories.map(story => story.ageGroup)));
+  const categories = ['all', ...new Set(safeStories.map(story => story?.category).filter(Boolean))];
+  const ageGroups = ['all', ...new Set(safeStories.map(story => story?.ageGroup).filter(Boolean))];
 
   // Filter stories based on search and filters
   const filteredStories = useMemo(() => {
-    return stories.filter(story => {
+    if (!Array.isArray(safeStories)) return [];
+    
+    return safeStories.filter(story => {
+      if (!story || !story.title || !story.summary || !story.moralLesson) return false;
+      
       const matchesSearch = story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            story.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            story.moralLesson.toLowerCase().includes(searchTerm.toLowerCase());
@@ -27,7 +78,7 @@ export default function Stories() {
       
       return matchesSearch && matchesCategory && matchesAgeGroup;
     });
-  }, [searchTerm, selectedCategory, selectedAgeGroup]);
+  }, [searchTerm, selectedCategory, selectedAgeGroup, safeStories]);
 
   const clearFilters = () => {
     setSearchTerm("");
@@ -48,14 +99,25 @@ export default function Stories() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
             <BookOpen className="w-10 h-10 text-purple-600 animate-bounce-gentle" />
-            <h1 className="font-kid text-4xl md:text-5xl text-gradient-rainbow">
-              All Stories
+            <h1 className="font-kid text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+              Our Magical Stories
             </h1>
-            <Sparkles className="w-10 h-10 text-yellow-500 animate-pulse" />
+            <Sparkles className="w-10 h-10 text-yellow-400 animate-pulse" />
           </div>
-          <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover {stories.length} magical tales filled with adventure, friendship, and important life lessons!
-          </p>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-4">
+              <Loader2 className="h-6 w-6 animate-spin text-purple-500 mr-2" />
+              <span className="text-purple-600">Loading stories...</span>
+            </div>
+          ) : error ? (
+            <p className="font-comic text-lg text-red-600 max-w-2xl mx-auto">
+              {error}
+            </p>
+          ) : (
+            <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
+              Discover {safeStories.length} magical {safeStories.length === 1 ? 'tale' : 'tales'} filled with adventure, friendship, and important life lessons!
+            </p>
+          )}
         </div>
 
         {/* Search and Filters */}
@@ -147,11 +209,29 @@ export default function Stories() {
 
         {/* Stories Grid */}
         {filteredStories.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredStories.map((story) => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          isLoading ? (
+            <div className="flex justify-center items-center py-12">
+              <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <p className="text-red-500 font-comic text-lg">{error}</p>
+            </div>
+          ) : filteredStories.length === 0 ? (
+            <div className="text-center py-12 col-span-full">
+              <p className="text-gray-500 font-comic text-lg">
+                {searchTerm || selectedCategory !== 'all' || selectedAgeGroup !== 'all' 
+                  ? 'No stories match your filters. Try adjusting your search.'
+                  : 'No stories found. Please check back later.'}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredStories.map((story) => (
+                <StoryCard key={story._id} story={story} />
+              ))}
+            </div>
+          )
         ) : (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">📚</div>

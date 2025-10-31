@@ -1,14 +1,45 @@
-'use client';
+
 
 import Link from 'next/link';
 import Image from 'next/image';
 import { Sparkles, Star, Heart, BookOpen, Users, Clock, ArrowRight } from 'lucide-react';
 import StoryCard from '@/components/StoryCard';
-import { stories } from '@/data/stories';
-import { series } from '@/data/series';
+import { client } from "@/sanity/client";
 
-export default function Home() {
-  const featuredStories = stories.slice(0, 3);
+
+
+const STORIES_QUERY = `*[_type == "story"] | order(_createdAt desc)[0...3] {
+  _id,
+  title,
+  summary,
+  "imageUrl": image,
+  category,
+  moralLesson,
+  slug {
+    current
+  },
+  readingTime,
+  ageGroup
+}`;
+
+const SERIES_QUERY = `*[_type == "series"] | order(_createdAt desc)[0...3] {
+  _id,
+  title,
+  description,
+  "coverImage": coverImage,
+  category,
+  ageGroup,
+  "chaptersCount": count(chapters[]->{_id})
+}`;
+
+
+export default async function Home() {
+  
+  const stories = await client.fetch(STORIES_QUERY);
+  const series = await client.fetch(SERIES_QUERY);
+
+  const featuredStories = stories;
+  console.log(stories)
 
   return (
     <div className="min-h-screen">
@@ -70,7 +101,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {featuredStories.map((story, index) => (
-              <div key={story.id} style={{animationDelay: `${index * 0.2}s`}}>
+              <div key={story._id} style={{animationDelay: `${index * 0.2}s`}}>
                 <StoryCard story={story} />
               </div>
             ))}

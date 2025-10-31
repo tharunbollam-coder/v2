@@ -1,34 +1,92 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, BookOpen, Sparkles, X } from 'lucide-react';
+import { Search, BookOpen, Sparkles, X, Loader2 } from 'lucide-react';
 import SeriesCard from '@/components/SeriesCard';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { series } from '@/data/series';
 import { cn } from '@/utils/cn';
+import { client } from '@/sanity/client';
+
+// Sanity query to fetch all series
+const ALL_SERIES_QUERY = `*[_type == "series"] | order(_createdAt desc) {
+  _id,
+  title,
+  description,
+  "coverImage": coverImage,
+  category,
+  status,
+  ageGroup,
+  slug {
+    current
+  },
+  chapters[]->{
+    _id,
+    title,
+    slug {
+      current
+    }
+  }
+}`;
 
 export default function Series() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [series, setSeries] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch series from Sanity
+  useEffect(() => {
+    const fetchSeries = async () => {
+      try {
+        const data = await client.fetch(ALL_SERIES_QUERY);
+        setSeries(data || []);
+      } catch (err) {
+        console.error('Error fetching series:', err);
+        setError('Failed to load series. Please try again later.');
+        setSeries([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchSeries();
+  }, []);
+
+  // Ensure series is an array before processing
+  const safeSeries = Array.isArray(series) ? series : [];
+  
   // Get unique categories and statuses for filters
-  const categories = Array.from(new Set(series.map(s => s.category)));
-  const statuses = Array.from(new Set(series.map(s => s.status)));
+  const categories = ['all', ...new Set(safeSeries
+    .map(s => s?.category)
+    .filter(Boolean)
+  )];
+  
+  const statuses = ['all', ...new Set(safeSeries
+    .map(s => s?.status)
+    .filter(Boolean)
+  )];
 
   // Filter series based on search and filters
   const filteredSeries = useMemo(() => {
-    return series.filter(s => {
-      const matchesSearch = s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           s.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           s.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    if (!Array.isArray(safeSeries)) return [];
+    
+    return safeSeries.filter(s => {
+      if (!s) return false;
+      
+      const searchLower = searchTerm.toLowerCase();
+      const matchesSearch = 
+        s.title?.toLowerCase().includes(searchLower) ||
+        s.description?.toLowerCase().includes(searchLower);
+        
       const matchesCategory = selectedCategory === "all" || s.category === selectedCategory;
       const matchesStatus = selectedStatus === "all" || s.status === selectedStatus;
       
       return matchesSearch && matchesCategory && matchesStatus;
     });
-  }, [searchTerm, selectedCategory, selectedStatus]);
+  }, [searchTerm, selectedCategory, selectedStatus, safeSeries]);
 
   const clearFilters = () => {
     setSearchTerm("");
@@ -40,7 +98,36 @@ export default function Series() {
     { label: 'Series', href: '/series' }
   ];
 
-  if (series.length === 0) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen py-8 px-4 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-12 w-12 animate-spin text-purple-500 mx-auto mb-4" />
+          <p className="font-comic text-lg text-purple-700">Loading series...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen py-8 px-4 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">😕</div>
+          <h2 className="font-kid text-3xl text-red-600 mb-2">Oops! Something went wrong</h2>
+          <p className="font-comic text-lg text-gray-700 mb-6">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="btn-primary font-comic font-bold py-2 px-6 rounded-full"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (safeSeries.length === 0) {
     return (
       <div className="min-h-screen py-8 px-4 flex items-center justify-center">
         <div className="container mx-auto text-center">
@@ -159,23 +246,56 @@ export default function Series() {
               )}
             </div>
           )}
-        </div>
 
-        {/* Results Count */}
-        <div className="mb-6">
-          <p className="font-comic text-muted-foreground">
-            {filteredSeries.length === series.length 
-              ? `Showing all ${series.length} series`
-              : `Found ${filteredSeries.length} of ${series.length} series`
-            }
-          </p>
+          <div className="flex flex-col lg:flex-row gap-4 w-full">
+            {/* Category Filter */}
+            <div className="w-full lg:w-auto">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background font-comic"
+              >
+                <option value="all">All Categories</option>
+                {categories.map(category => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Status Filter */}
+            <div className="w-full lg:w-auto">
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background font-comic"
+              >
+                <option value="all">All Status</option>
+                {statuses.map(status => (
+                  <option key={status} value={status}>
+                    {status.charAt(0).toUpperCase() + status.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Clear Filters */}
+            {(searchTerm || selectedCategory !== "all" || selectedStatus !== "all") && (
+              <button
+                onClick={clearFilters}
+                className="flex items-center justify-center space-x-2 px-4 py-3 bg-muted hover:bg-muted/80 rounded-xl transition-colors duration-200 font-comic whitespace-nowrap"
+              >
+                <X className="h-4 w-4" />
+                <span>Clear Filters</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Series Grid */}
         {filteredSeries.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredSeries.map((s) => (
-              <SeriesCard key={s.id} series={s} />
+            {filteredSeries.map((series) => (
+              <SeriesCard key={series._id} series={series} />
             ))}
           </div>
         ) : (
@@ -183,14 +303,18 @@ export default function Series() {
             <div className="text-6xl mb-4">📚</div>
             <h3 className="font-kid text-2xl text-foreground mb-2">No Series Found</h3>
             <p className="font-comic text-muted-foreground mb-6">
-              Try adjusting your search terms or filters to find more series.
+              {searchTerm || selectedCategory !== 'all' || selectedStatus !== 'all'
+                ? 'Try adjusting your search or filters to find more series.'
+                : 'No series available at the moment. Please check back later.'}
             </p>
-            <button
-              onClick={clearFilters}
-              className="btn-primary shadow-colored hover:shadow-strong font-bold py-3 px-6"
-            >
-              Show All Series
-            </button>
+            {(searchTerm || selectedCategory !== 'all' || selectedStatus !== 'all') && (
+              <button
+                onClick={clearFilters}
+                className="btn-primary font-comic font-bold py-2 px-6 rounded-full"
+              >
+                Clear All Filters
+              </button>
+            )}
           </div>
         )}
       </div>
