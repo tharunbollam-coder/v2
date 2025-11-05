@@ -71,68 +71,71 @@ export default function SeriesCard({ series, className }) {
 
       {/* Content Section */}
       <div className="p-6">
-        <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+        <h4 className="font-semibold text-gray-900 mb-2">About this series</h4>
+        <p className="text-gray-600 mb-4 line-clamp-4 leading-relaxed text-sm">
           {series.description}
         </p>
 
         {/* Series Info */}
-        <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-500">
-          <div className="flex items-center space-x-1">
-            <BookOpen className="h-4 w-4" />
-            <span>{series.publishedChapters}/{series.totalChapters} chapters</span>
+        <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <div className="flex items-center space-x-2 text-gray-700">
+              <BookOpen className="h-4 w-4 flex-shrink-0" />
+              <div>
+                <div className="font-medium">{series.publishedChapters} Chapters</div>
+                <div className="text-xs text-gray-500">Available now</div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center space-x-1">
-            <Users className="h-4 w-4" />
-            <span>{series.ageGroup}</span>
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <div className="flex items-center space-x-2 text-gray-700">
+              <Users className="h-4 w-4 flex-shrink-0" />
+              <div>
+                <div className="font-medium">{series.ageGroup}</div>
+                <div className="text-xs text-gray-500">Age group</div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {series.tags.slice(0, 3).map((tag, index) => (
-            <span
-              key={index}
-              className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium"
-            >
-              {tag}
-            </span>
-          ))}
-          {series.tags.length > 3 && (
-            <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
-              +{series.tags.length - 3} more
-            </span>
-          )}
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-sm text-gray-600">Progress</span>
-            <span className="text-sm text-gray-600">
-              {Math.round((series.publishedChapters / series.totalChapters) * 100)}%
-            </span>
+        {Array.isArray(series.tags) && series.tags.length > 0 && (
+          <div className="mb-4">
+            <h5 className="text-xs font-medium text-gray-500 mb-2">THEMES</h5>
+            <div className="flex flex-wrap gap-2">
+              {series.tags.slice(0, 3).map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-xs font-medium border border-purple-100"
+                >
+                  {tag}
+                </span>
+              ))}
+              {series.tags.length > 3 && (
+                <span className="bg-gray-50 text-gray-500 px-3 py-1 rounded-full text-xs border border-gray-100">
+                  +{series.tags.length - 3} more
+                </span>
+              )}
+            </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(series.publishedChapters / series.totalChapters) * 100}%` }}
-            ></div>
-          </div>
-        </div>
+        )}
 
         {/* Schedule */}
-        <div className="bg-blue-50 rounded-lg p-3 mb-4">
-          <div className="flex items-center space-x-2">
-            <Clock className="h-4 w-4 text-blue-600" />
-            <span className="text-blue-800 text-sm font-medium">
-              {series.publishSchedule}
-            </span>
+        {series.publishSchedule && (
+          <div className="bg-blue-50 rounded-lg p-3 mb-4 border border-blue-100">
+            <div className="flex items-start space-x-2">
+              <Clock className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-medium text-blue-800">New chapters</div>
+                <div className="text-xs text-blue-600">{series.publishSchedule}</div>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Action Button */}
         <Link
-          href={`/series/${series.id}`}
+          href={`/series/${series._id || series.id}`}
           className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 group"
         >
           <span>Read Series</span>

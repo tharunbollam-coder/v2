@@ -185,7 +185,7 @@ export default function Series() {
             </div>
 
             {/* Category Filter */}
-            <div className="w-full lg:w-auto">
+            <div className="w-full lg:w-48">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
@@ -193,13 +193,15 @@ export default function Series() {
               >
                 <option value="all">All Categories</option>
                 {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                  <option key={category} value={category}>
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Status Filter */}
-            <div className="w-full lg:w-auto">
+            <div className="w-full lg:w-40">
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
@@ -218,10 +220,10 @@ export default function Series() {
             {(searchTerm || selectedCategory !== "all" || selectedStatus !== "all") && (
               <button
                 onClick={clearFilters}
-                className="flex items-center space-x-2 px-4 py-3 bg-muted hover:bg-muted/80 rounded-xl transition-colors duration-200 font-comic"
+                className="flex items-center justify-center space-x-2 px-4 py-3 bg-muted hover:bg-muted/80 rounded-xl transition-colors duration-200 font-comic whitespace-nowrap w-full lg:w-auto"
               >
                 <X className="h-4 w-4" />
-                <span>Clear</span>
+                <span>Clear Filters</span>
               </button>
             )}
           </div>
@@ -246,56 +248,19 @@ export default function Series() {
               )}
             </div>
           )}
-
-          <div className="flex flex-col lg:flex-row gap-4 w-full">
-            {/* Category Filter */}
-            <div className="w-full lg:w-auto">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background font-comic"
-              >
-                <option value="all">All Categories</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Status Filter */}
-            <div className="w-full lg:w-auto">
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background font-comic"
-              >
-                <option value="all">All Status</option>
-                {statuses.map(status => (
-                  <option key={status} value={status}>
-                    {status.charAt(0).toUpperCase() + status.slice(1)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Clear Filters */}
-            {(searchTerm || selectedCategory !== "all" || selectedStatus !== "all") && (
-              <button
-                onClick={clearFilters}
-                className="flex items-center justify-center space-x-2 px-4 py-3 bg-muted hover:bg-muted/80 rounded-xl transition-colors duration-200 font-comic whitespace-nowrap"
-              >
-                <X className="h-4 w-4" />
-                <span>Clear Filters</span>
-              </button>
-            )}
-          </div>
         </div>
 
         {/* Series Grid */}
         {filteredSeries.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredSeries.map((series) => (
-              <SeriesCard key={series._id} series={series} />
+              <SeriesCard 
+                key={series._id} 
+                series={{
+                  ...series,
+                  id: series._id // Add id field for backward compatibility
+                }} 
+              />
             ))}
           </div>
         ) : (

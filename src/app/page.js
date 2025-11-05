@@ -151,7 +151,7 @@ export default async function Home() {
                         <span>Explore Series</span>
                       </button>
                     </Link>
-                    <Link href={`/series/${series[0]?.id}`} className="w-full sm:w-auto">
+                    <Link href={`/series/${series[0]?._id || series[0]?.id}`} className="w-full sm:w-auto">
                       <button className="btn-secondary shadow-colored hover:shadow-strong font-comic font-bold w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-3">
                         <span>Start Reading →</span>
                       </button>
