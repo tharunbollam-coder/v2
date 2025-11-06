@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { Clock, Users, Lightbulb, ArrowRight, BookOpen } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-export default function StoryCard({ story, className }) {
+import React from 'react';
+
+function StoryCardComponent({ story, className }) {
   return (
     <div className={cn(
       "card-modern group animate-slide-up",
@@ -84,3 +86,6 @@ export default function StoryCard({ story, className }) {
     </div>
   );
 }
+
+const StoryCard = React.memo(StoryCardComponent);
+export default StoryCard;

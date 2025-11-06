@@ -65,6 +65,9 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="relative group p-3 rounded-full transition-all duration-300 hover:scale-110 overflow-hidden"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
             >
               {/* Background */}
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
@@ -84,7 +87,7 @@ export default function Navbar() {
         </div>
 
         {/* Enhanced Mobile Navigation */}
-        <div className={cn(
+        <div id="mobile-nav" className={cn(
           "md:hidden transition-all duration-500 ease-in-out bg-gradient-to-br from-white/98 via-indigo-50/98 to-purple-50/98 backdrop-blur-xl border-t border-indigo-200/50 shadow-lg",
           isOpen ? "max-h-[500px] opacity-100 pb-6" : "max-h-0 opacity-0 overflow-hidden"
         )}>

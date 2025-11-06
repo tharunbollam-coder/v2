@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { Clock, Users, Star, BookOpen, ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-export default function SeriesCard({ series, className }) {
+import React from 'react';
+
+function SeriesCardComponent({ series, className }) {
   const getStatusColor = (status) => {
     switch (status) {
       case 'ongoing': return 'bg-green-500';
@@ -31,13 +33,19 @@ export default function SeriesCard({ series, className }) {
     )}>
       {/* Image Section */}
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={series.coverImage}
-          alt={series.title}
-          fill
-          className="object-cover group-hover:scale-102 transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        {series.coverImage ? (
+          <Image
+            src={series.coverImage}
+            alt={series.title}
+            fill
+            className="object-cover group-hover:scale-102 transition-transform duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-100">
+            <BookOpen className="h-10 w-10 text-gray-400" />
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         
         {/* Status Badge */}
@@ -145,3 +153,6 @@ export default function SeriesCard({ series, className }) {
     </div>
   );
 }
+
+const SeriesCard = React.memo(SeriesCardComponent);
+export default SeriesCard;

@@ -39,7 +39,6 @@ export default async function Home() {
   const series = await client.fetch(SERIES_QUERY);
 
   const featuredStories = stories;
-  console.log(stories)
 
   return (
     <div className="min-h-screen">
@@ -160,7 +159,7 @@ export default async function Home() {
                 </div>
                 <div className="relative order-1 lg:order-2">
                   <Image 
-                    src={series[0]?.coverImage} 
+                    src={series[0]?.coverImage?.asset?.url || series[0]?.coverImage} 
                     alt={`${series[0]?.title} series cover showing magical adventures and educational themes for kids`}
                     width={600}
                     height={400}
@@ -168,7 +167,7 @@ export default async function Home() {
                     priority={false}
                   />
                   <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-comic font-bold">
-                    Chapter {series[0]?.publishedChapters} Available!
+                    Chapter {series[0]?.chaptersCount} Available!
                   </div>
                 </div>
               </div>

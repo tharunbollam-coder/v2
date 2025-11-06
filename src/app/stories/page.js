@@ -8,7 +8,7 @@ import { cn } from '@/utils/cn';
 import { client } from '@/sanity/client';
 
 // Server-side data fetching
-export const dynamic = 'force-dynamic';
+
 
 // Sanity query to fetch all stories
 const ALL_STORIES_QUERY = `*[_type == "story"] | order(_createdAt desc) {
@@ -37,6 +37,7 @@ export default function Stories() {
   const [stories, setStories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
   // Fetch stories from Sanity
   useEffect(() => {
@@ -45,7 +46,6 @@ export default function Stories() {
         const data = await client.fetch(ALL_STORIES_QUERY);
         setStories(data || []);
       } catch (err) {
-        console.error('Error fetching stories:', err);
         setError('Failed to load stories. Please try again later.');
         setStories([]);
       } finally {
@@ -55,6 +55,12 @@ export default function Stories() {
 
     fetchStories();
   }, []);
+
+  // Debounce search term to reduce re-renders
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearchTerm(searchTerm), 200);
+    return () => clearTimeout(t);
+  }, [searchTerm]);
 
   // Ensure stories is an array before processing
   const safeStories = Array.isArray(stories) ? stories : [];
@@ -70,15 +76,15 @@ export default function Stories() {
     return safeStories.filter(story => {
       if (!story || !story.title || !story.summary || !story.moralLesson) return false;
       
-      const matchesSearch = story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           story.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           story.moralLesson.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = story.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+                           story.summary.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+                           story.moralLesson.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
       const matchesCategory = selectedCategory === "all" || story.category === selectedCategory;
       const matchesAgeGroup = selectedAgeGroup === "all" || story.ageGroup === selectedAgeGroup;
       
       return matchesSearch && matchesCategory && matchesAgeGroup;
     });
-  }, [searchTerm, selectedCategory, selectedAgeGroup, safeStories]);
+  }, [debouncedSearchTerm, selectedCategory, selectedAgeGroup, safeStories]);
 
   const clearFilters = () => {
     setSearchTerm("");
@@ -110,9 +116,17 @@ export default function Stories() {
               <span className="text-purple-600">Loading stories...</span>
             </div>
           ) : error ? (
-            <p className="font-comic text-lg text-red-600 max-w-2xl mx-auto">
-              {error}
-            </p>
+            <div className="flex flex-col items-center gap-4">
+              <p className="font-comic text-lg text-red-600 max-w-2xl mx-auto">
+                {error}
+              </p>
+              <button 
+                onClick={() => window.location.reload()}
+                className="btn-primary font-comic font-bold py-2 px-6 rounded-full"
+              >
+                Try Again
+              </button>
+            </div>
           ) : (
             <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
               Discover {safeStories.length} magical {safeStories.length === 1 ? 'tale' : 'tales'} filled with adventure, friendship, and important life lessons!

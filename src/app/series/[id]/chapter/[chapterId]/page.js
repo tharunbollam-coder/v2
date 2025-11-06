@@ -71,8 +71,7 @@ export default function ChapterDetail() {
         
         setChapter(foundChapter);
       } catch (err) {
-        console.error('Error fetching chapter:', err);
-        setError(err.message);
+        setError(err.message || 'Failed to load chapter');
       } finally {
         setIsLoading(false);
       }

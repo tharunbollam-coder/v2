@@ -121,7 +121,6 @@ export default function SeriesDetail() {
         }
         
         const data = await client.fetch(SERIES_QUERY, { id: seriesId });
-        console.log('Fetched series data:', data); // Debug log
         
         if (!data) {
           setError('Series not found');
@@ -129,7 +128,6 @@ export default function SeriesDetail() {
           setSeriesData(data);
         }
       } catch (err) {
-        console.error('Error fetching series:', err);
         setError('Failed to load series. Please try again later.');
       } finally {
         setIsLoading(false);

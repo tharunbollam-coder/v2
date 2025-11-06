@@ -36,6 +36,7 @@ export default function Series() {
   const [series, setSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
   // Fetch series from Sanity
   useEffect(() => {
@@ -44,7 +45,6 @@ export default function Series() {
         const data = await client.fetch(ALL_SERIES_QUERY);
         setSeries(data || []);
       } catch (err) {
-        console.error('Error fetching series:', err);
         setError('Failed to load series. Please try again later.');
         setSeries([]);
       } finally {
@@ -54,6 +54,12 @@ export default function Series() {
 
     fetchSeries();
   }, []);
+
+  // Debounce search term to reduce re-renders
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearchTerm(searchTerm), 200);
+    return () => clearTimeout(t);
+  }, [searchTerm]);
 
   // Ensure series is an array before processing
   const safeSeries = Array.isArray(series) ? series : [];
@@ -76,7 +82,7 @@ export default function Series() {
     return safeSeries.filter(s => {
       if (!s) return false;
       
-      const searchLower = searchTerm.toLowerCase();
+      const searchLower = debouncedSearchTerm.toLowerCase();
       const matchesSearch = 
         s.title?.toLowerCase().includes(searchLower) ||
         s.description?.toLowerCase().includes(searchLower);
@@ -86,7 +92,7 @@ export default function Series() {
       
       return matchesSearch && matchesCategory && matchesStatus;
     });
-  }, [searchTerm, selectedCategory, selectedStatus, safeSeries]);
+  }, [debouncedSearchTerm, selectedCategory, selectedStatus, safeSeries]);
 
   const clearFilters = () => {
     setSearchTerm("");
